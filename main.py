@@ -3,7 +3,6 @@ from fastapi import FastAPI
 from models import Phone
 from phone_iso3166.country import *
 
-
 app = FastAPI()
 
 db: List[Phone] = [
@@ -14,9 +13,11 @@ db: List[Phone] = [
 async def root():
     return {"Hello":"World"}
 
+
 @app.get("/get-phone-country")
 async def fetch_user():
     return db;
+
 
 @app.post("/get-phone-country")
 async def register_user(user:Phone):
